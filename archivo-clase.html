@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap  & Vue CND -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Vue Primera Clase</title>
+</head>
+<style>
+body {
+    background-color: #EEE;
+}
+</style>
+<body>
+<div id="app">
+    <div class="container text-center">
+        <h2 class="m-4">{{bienvenida}}</h2>
+        <!-- Card -->
+        <div class="card" style="width: 18rem; margin: 0 auto; margin-top: 20px">
+            <div class="card-body">
+                <img :src="carta.url" class="card-img-top"> <!--v-bind-->
+                <h5 class="card-title">{{carta.title}}</h5>
+                <p class="card-text" v-html="carta.description"></p>
+                <a href="#" class="btn btn-warning fw-bold" @click="mostrarCuack">{{carta.buttonText}}</a> <!--v-on-->
+                <p class="card-text mt-4">Precio del producto con IVA $ {{calcularIVA()}}</p>
+            </div>
+          </div>
+    </div>
+    <div class="container">
+        <div class="mt-4">
+            <h3>Formulario</h3>
+            <hr>
+            <!-- Campo Nombre-->
+            <label for="nombre" style="display: block;">Ingresa tu Nombre:</label>
+            <input type="text" name="nombre" v-model="nombre">
+            <small style="display: block;">Nombre en Mayusculas {{nombreMayusculas}}</small>
+
+            <h3 class="mt-4">Contador</h3>
+            <hr>
+            <input type="text" :value="numberAdd" readonly>
+            <br><br>
+            <button class="btn btn-success" @click="sumarUno">Sumar</button>
+            <button class="btn btn-danger" @click="restarUno">Restar</button>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+var app = new Vue({
+    el: '#app',     //Elemento
+    data: {         //Información
+        bienvenida: 'Bienvenido a Vue2',
+        carta: {
+            url: 'https://static8.depositphotos.com/1241729/910/i/600/depositphotos_9103928-stock-photo-yellow-rubber-duck-on-white.jpg',
+            title: 'Patito de Hule',
+            description: 'Hermoso Patito de Hule color <span style="font-weight: bold; color: rgb(255, 200, 0)">Amarillo</span> con sonido de Cuack Cuack Cuack',
+            buttonText: 'Ver Precio!',
+            price: '5.00',
+        },
+        nombre: '',
+        numberAdd: 0,
+    },
+    methods: {
+        mostrarCuack() {
+            alert(`Este hermoso ${this.carta.title} vale $ ${this.carta.price}!`)
+        },
+        calcularIVA() {
+            return this.carta.price * 1.21;
+        },
+        sumarUno() {
+            this.numberAdd += 1
+        },
+        restarUno() {
+            this.numberAdd -= 1
+        }
+    },
+    computed: {
+        //en Computed Properties tengo que hacer return SIEMPRE
+        nombreMayusculas() {
+            return this.nombre.toUpperCase()
+        }
+    },
+})
+</script>
+</html>
