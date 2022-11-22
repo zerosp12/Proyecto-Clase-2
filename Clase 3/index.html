@@ -21,11 +21,23 @@
             </div>
         </header>
         <main>
-            <ul class="list-group list-group-horizontal">
-                <li class="list-group-item" v-for="(user, index) of userList" :key="index">
-                    {{user.name}} - {{index}}
-                </li>
-            </ul>
+
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(user, index) of userList" :key="index" :class="obtenerClass(index)">
+                            <td scope="row">{{index}}</td>
+                            <td>{{user.name}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </main>
         <footer></footer>
     </section>

@@ -4,14 +4,18 @@ const app = new Vue({
         userName: "",
 
         userList: [
-            { name: 'John', url: "test" },
-            { name: 'John1', url: "test1" },
-            { name: 'John2', url: "test2" },
-            { name: 'John3', url: "test3" },
-            { name: 'John4', url: "test4" }
-        ]
+            { name: 'Juan', img: "quien sabe" },
+            { name: 'Juan1', img: "quien sabe" },
+            { name: 'Juan2', img: "quien sabe" },
+            { name: 'Juan3', img: "quien sabe" },
+            { name: 'Juan4', img: "quien sabe" }
+        ],
     },
     methods: {
+        obtenerClass(index)
+        {
+            return (index % 2 == 0) ? 'bg-light' : ''
+        },
         requestLogin()
         {
             this.userName = 'Jose'
