@@ -21,11 +21,11 @@
 <body>
     <div id="app" class="container p-4 mt-4">
         <h3>Lista de Clientes</h3>
-        <render-table :objetos="listaClientes" estilo="table table-dark" tipo="0"></render-table>
+        <render-table :objetos="listaClientes" :estilo="estiloClientes" tipo="0"></render-table>
         <h3>Lista de Vehículos</h3>
-        <render-table :objetos="listaVehiculos" estilo="table table-primary" tipo="1"></render-table>
+        <render-table :objetos="listaVehiculos" :estilo="estiloVehiculos" tipo="1"></render-table>
         <h3>Lista de Sucursales</h3>
-        <render-table :objetos="listaSucursales" estilo="table table-danger" tipo="2"></render-table>
+        <render-table :objetos="listaSucursales" :estilo="estiloSucursales" tipo="2"></render-table>
     </div>
     <!-- Bootstrap  & Vue CND -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
